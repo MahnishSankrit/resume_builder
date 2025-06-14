@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Resume + Portfolio Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+
+    <style>
+        #resume-preview,
+        #form-section,
+        #preview-section {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        #resume-preview {
+            width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Live Resume + Portfolio Builder</h1>
+
+
+    </header>
+
+    <div class="container">
+        <section id="form-section">
+            <h2>Enter your Resume Information</h2>
+            <form action="" id="Resume-form">
+
+                <label>Name
+                    <input type="text" id="nameinput" />
+                </label>
+                <label>Email
+                    <input type="email" id="emailinput" />
+                </label>
+                <label>Phone
+                    <input type="text" id="phoneinput" />
+                </label>
+                <label>Summary
+                    <textarea id="suminput" rows="3"></textarea>
+                </label>
+                <label>Education
+                    <textarea id="eduinput" rows="2"></textarea>
+                </label>
+                <div id="experience-section">
+                    <label>Experience</label>
+                    <div id="experience-list">
+                        <textarea class="expinput" rows="2"></textarea>
+                    </div>
+                    <button type="button" id="add-exp">+ Add Experience</button>
+                </div>
+                <div id="project-section">
+                    <label>Project</label>
+                    <div id="project-list">
+                        <textarea class="projectinput" rows="2"></textarea>
+                    </div>
+                    <button type="button" id="add-project">+ Add Project</button>
+                </div>
+                <label>Skills
+                    <input type="text" id="skillinput" />
+                </label>
+                <!-- <label>Projects
+                    <input type="text" id="projectinput" />
+                </label> -->
+                <label for="">
+                    <input type="url" id="linkedininput" placeholder="https://linkedin.com/in/yourname">
+                </label>
+                <label for="">GitHub
+                    <input type="url" id="githubinput" placeholder="https://github.com/yourusername">
+                </label>
+
+                <label for="">Portfolio/Website
+                    <input type="url" id="portfoliourlinput" placeholder="https://yourportfolio.com">
+                </label>
+
+                <label for="">About Me
+                    <textarea id="aboutmeinput" rows="4" placeholder="Write a short bio about yourself..."></textarea>
+                </label>
+
+                <label for="templateSelect">Select Resume Template</label>
+                <select id="templateSelect">
+                    <option value="classic">Classic</option>
+                    <option value="modern">Modern</option>
+                    <option value="elegant">Elegant</option>
+                    <option value="creative">Creative</option>
+                </select>
+
+                <label for="profileImage">Profile Photo (optional)</label>
+                <input type="file" id="profileImage" accept="image/*">
+
+                <div>
+                    <button id="btn-1" type="button">Preview</button>
+                    <button id="btn-2" type="button">Download resume</button>
+                </div>
+            </form>
+
+            <!-- <div>
+                <h3>Preview your resume</h3>
+                <button class="btn">Preview</button>
+            </div> -->
+
+            <img id="preview-image" style="display: none;" alt="Profile" />
+
+        </section>
+
+        <section id="preview-section" style="display: none;">
+            <!-- classic template preview -->
+            <div id="preview-classic" class="template-classic resume-preview" style="display: none;">
+                <!-- <img id="classic-image" class="preview-image" src="" alt="Profile Image" /> -->
+                <h1 id="classic-name">Your Name</h1>
+                <p><strong>Email:</strong> <span id="classic-email">you@example.com</span></p>
+                <p><strong>Phone:</strong> <span id="classic-phone">1234567890</span></p>
+                <h2>Summary</h2>
+                <p id="classic-summary">Summary will appear here...</p>
+                <h2>Education</h2>
+                <p id="classic-edu">Your education</p>
+                <h2>Experience</h2>
+                <ul id="classic-exp"></ul>
+                <h2>Projects</h2>
+                <ul id="classic-projects"></ul>
+                <h2>Skills</h2>
+                <p id="classic-skills">Your skills</p>
+                <h2>About Me</h2>
+                <p id="classic-aboutme">Your bio will appear here...</p>
+                <h2>Links</h2>
+                <p>
+                    <a id="classic-linkedin" href="#" target="_blank">LinkedIn</a> |
+                    <a id="classic-github" href="#" target="_blank">GitHub</a> |
+                    <a id="classic-portfolio" href="#" target="_blank">Portfolio</a>
+                </p>
+            </div>
+
+            <!-- modern template preview -->
+            <div id="preview-modern" class="template-modern resume-preview" style="display: none;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                        <h1 id="modern-name">Your Name</h1>
+                        <p id="modern-summary">Short tagline or summary goes here...</p>
+                    </div>
+                    <!-- <img id="modern-image" class="preview-image" src="" alt="Profile Image" /> -->
+                </div>
+                <hr>
+                <p><strong>Email:</strong> <span id="modern-email">you@example.com</span> | <strong>Phone:</strong>
+                    <span id="modern-phone">1234567890</span>
+                </p>
+                <h2>Education</h2>
+                <p id="modern-edu">Education info...</p>
+                <h2>Experience</h2>
+                <ul id="modern-exp"></ul>
+                <h2>Projects</h2>
+                <ul id="modern-projects"></ul>
+                <h2>Skills</h2>
+                <p id="modern-skills">Skills info...</p>
+                <h2>About Me</h2>
+                <p id="modern-aboutme">About me goes here...</p>
+                <h2>Links</h2>
+                <p>
+                    <a id="modern-linkedin" href="#" target="_blank">LinkedIn</a> |
+                    <a id="modern-github" href="#" target="_blank">GitHub</a> |
+                    <a id="modern-portfolio" href="#" target="_blank">Portfolio</a>
+                </p>
+            </div>
+
+
+            <!-- elegant template preview  -->
+            <div id="preview-elegant" class="template-elegant resume-preview" style="display: none;">
+                <div style="text-align: center;">
+                    <!-- <img id="elegant-image" class="preview-image" src="" alt="Profile Image" /> -->
+                    <h1 id="elegant-name">Your Name</h1>
+                    <p id="elegant-summary"><em>Professional summary or tagline</em></p>
+                </div>
+                <hr>
+                <p><strong>Email:</strong> <span id="elegant-email">you@example.com</span><br>
+                    <strong>Phone:</strong> <span id="elegant-phone">1234567890</span>
+                </p>
+                <h2>Education</h2>
+                <p id="elegant-edu">Elegant education...</p>
+                <h2>Experience</h2>
+                <ul id="elegant-exp"></ul>
+                <h2>Projects</h2>
+                <ul id="elegant-projects"></ul>
+                <h2>Skills</h2>
+                <p id="elegant-skills">Elegant skills...</p>
+                <h2>About Me</h2>
+                <p id="elegant-aboutme">About me in elegant tone...</p>
+                <h2>Links</h2>
+                <p>
+                    <a id="elegant-linkedin" href="#" target="_blank">LinkedIn</a> |
+                    <a id="elegant-github" href="#" target="_blank">GitHub</a> |
+                    <a id="elegant-portfolio" href="#" target="_blank">Portfolio</a>
+                </p>
+            </div>
+
+
+            <!-- creative template preview -->
+            <div id="preview-creative" class="template-creative resume-preview" style="display: none;">
+                <div style="display: flex; justify-content: space-between;">
+                    <h1 id="creative-name">Your Name</h1>
+                    <!-- <img id="creative-image" class="preview-image" src="" alt="Profile Image" /> -->
+                </div>
+                <pre id="creative-summary">"Creative Thinker | Developer | Designer"</pre>
+                <h2>Education</h2>
+                <p id="creative-edu">Creative education here...</p>
+                <h2>Experience</h2>
+                <ul id="creative-exp"></ul>
+                <h2>Projects</h2>
+                <ul id="creative-projects"></ul>
+                <h2>Skills</h2>
+                <p id="creative-skills">Creative skills...</p>
+                <h2>About Me</h2>
+                <p id="creative-aboutme">Creative personal description...</p>
+                <h2>Contact</h2>
+                <p>
+                    📧 <span id="creative-email">you@example.com</span> | ☎️ <span id="creative-phone">1234567890</span>
+                </p>
+                <h2>Links</h2>
+                <p>
+                    <a id="creative-linkedin" href="#" target="_blank">LinkedIn</a> |
+                    <a id="creative-github" href="#" target="_blank">GitHub</a> |
+                    <a id="creative-portfolio" href="#" target="_blank">Portfolio</a>
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
+
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/downloadjs@1.4.7"></script> -->
+
+    <!-- Add these right before your closing </body> tag -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,294 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to left, gray, black);
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  margin: 2rem;
+}
+
+.container {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  gap: 2px;
+   max-width: 100%;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+}
+
+#form-section,
+#preview-section {
+  width: 45%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+#Resume-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+
+textarea {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+button,
+#btn-1,
+#btn-2 {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: rgb(11, 225, 168);
+  color: black;
+  border: none;
+  border-radius: 5px;
+  width: 50%;
+}
+
+#preview-section {
+  display: none;
+  color: black;
+  background-color: white;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+  text-align: left;
+}
+
+#resume-preview {
+  color: black;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+#preview-image {
+  display: none;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 1rem auto;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#resume-preview h3 {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.3rem;
+}
+
+#resume-preview ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+/* --- Classic Template --- */
+.template-classic #resume-preview {
+  font-family: Georgia, serif;
+  color: #000;
+  line-height: 1.5;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  border: 1px solid #999;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.template-classic h1 {
+  font-size: 28px;
+  margin-bottom: 0;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+.template-classic p,
+.template-classic h2,
+.template-classic ul {
+  margin: 0.5rem 0;
+}
+
+.template-classic h2 {
+  font-size: 20px;
+  border-bottom: 1px solid #ccc;
+  margin-top: 1.5rem;
+}
+
+.template-classic a {
+  color: #004080;
+  text-decoration: none;
+}
+
+.template-classic #preview-image {
+  float: right;
+  margin-left: 20px;
+}
+
+/* --- Elegant Template --- */
+.template-elegant #resume-preview {
+  font-family: 'Garamond', 'Palatino Linotype', serif;
+  color: #333;
+  background: #fcfcfc;
+  border-left: 6px solid #555;
+  padding: 2rem;
+  max-width: 850px;
+  margin: auto;
+}
+
+.template-elegant h1 {
+  font-size: 30px;
+  color: #444;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.template-elegant h2 {
+  font-size: 20px;
+  margin-top: 1.2rem;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 4px;
+}
+
+.template-elegant h2::before {
+  content: "❖ ";
+  color: #444;
+}
+
+.template-elegant a {
+  color: #666;
+  text-decoration: none;
+  font-style: italic;
+}
+
+/* --- Creative Template --- */
+.template-creative #resume-preview {
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(45deg, #f8f8f8, #ffffff);
+  color: #444;
+  padding: 2rem;
+  border: 1px dashed #555;
+}
+
+.template-creative h1 {
+  color: #d35400;
+  font-size: 24px;
+  border-bottom: 2px dashed #e67e22;
+  padding-bottom: 4px;
+}
+
+.template-creative h2 {
+  font-size: 18px;
+  margin-top: 1.2rem;
+  color: #2c3e50;
+  border-left: 4px solid #d35400;
+  padding-left: 10px;
+  background: #fff5e6;
+}
+
+.template-creative a {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* --- Modern Template --- */
+.template-modern #resume-preview {
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  color: #2c3e50;
+  background: #f4f4f4;
+  padding: 2rem;
+  border-left: 8px solid #3498db;
+}
+
+.template-modern h1 {
+  font-size: 26px;
+  color: #2980b9;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.template-modern h2 {
+  color: #2c3e50;
+  margin-top: 1rem;
+  border-bottom: 1px solid #ccc;
+  font-size: 18px;
+}
+
+.template-modern a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  #form-section,
+  #preview-section {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  button,
+  #btn-1,
+  #btn-2 {
+    width: 100%;
+  }
+
+  #resume-preview {
+    padding: 1rem;
+  }
+
+  #preview-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .template-classic #resume-preview,
+  .template-elegant #resume-preview,
+  .template-creative #resume-preview,
+  .template-modern #resume-preview {
+    padding: 1rem;
+    margin: 0 auto;
+  }
+}
+
+
+
+
+
+
+

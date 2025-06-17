@@ -21,6 +21,90 @@
             box-sizing: border-box;
             overflow-x: hidden;
         }
+
+        .error-highlight {
+            text-decoration: underline wavy red;
+            cursor: help;
+            position: relative;
+        }
+
+        .error-highlight:hover::after {
+            content: attr(data-suggestion);
+            position: absolute;
+            bottom: -1.5em;
+            left: 0;
+            background: #f0e4e4;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+
+        #grammar-toggle-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  
+  margin: 1rem 1rem 1.5rem 0; /* top right bottom left */
+
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.switch-label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 20px;
+  position: relative;
+  transition: background-color 0.2s;
+  margin-right: 8px;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.toggle-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #dfd7d7;
+}
+@media (max-width: 600px) {
+  #grammar-toggle-wrapper {
+    justify-content: center;
+  }
+}
+
     </style>
     <link rel="stylesheet" href="style.css" />
 
@@ -30,15 +114,21 @@
 
     <header>
         <h1>Live Resume + Portfolio Builder</h1>
-
-
     </header>
 
     <div class="container">
         <section id="form-section">
             <h2>Enter your Resume Information</h2>
-            <form action="" id="Resume-form">
+            <!-- Move this just after <h2>Enter your Resume Information</h2> -->
+<div id="grammar-toggle-wrapper">
+  <label class="switch-label">
+    <input type="checkbox" id="toggleGrammarCheck" checked />
+    <span class="slider"></span>
+    <span class="toggle-text">Enable Grammar Check</span>
+  </label>
+</div>
 
+            <form id="Resume-form">
                 <label>Name
                     <input type="text" id="nameinput" />
                 </label>
@@ -51,16 +141,30 @@
                 <label>Summary
                     <textarea id="suminput" rows="3"></textarea>
                 </label>
+                <!-- <div style="margin: 10px 0;">
+                    <label>
+                        <input type="checkbox" id="toggleGrammarCheck" checked />
+                        Enable Grammar Check ✅
+                    </label>
+                </div> -->
+
+
+
+                <div id="sum-suggestions" class="suggestion-box"></div>
+
                 <label>Education
                     <textarea id="eduinput" rows="2"></textarea>
                 </label>
+
                 <div id="experience-section">
                     <label>Experience</label>
                     <div id="experience-list">
                         <textarea class="expinput" rows="2"></textarea>
+                        <div class="exp-suggestions suggestion-box"></div>
                     </div>
                     <button type="button" id="add-exp">+ Add Experience</button>
                 </div>
+
                 <div id="project-section">
                     <label>Project</label>
                     <div id="project-list">
@@ -68,26 +172,25 @@
                     </div>
                     <button type="button" id="add-project">+ Add Project</button>
                 </div>
+
                 <label>Skills
                     <input type="text" id="skillinput" />
                 </label>
-                <!-- <label>Projects
-                    <input type="text" id="projectinput" />
-                </label> -->
-                <label for="">
-                    <input type="url" id="linkedininput" placeholder="https://linkedin.com/in/yourname">
+
+                <label>
+                    <input type="url" id="linkedininput" placeholder="https://linkedin.com/in/yourname" />
                 </label>
-                <label for="">GitHub
-                    <input type="url" id="githubinput" placeholder="https://github.com/yourusername">
+                <label>GitHub
+                    <input type="url" id="githubinput" placeholder="https://github.com/yourusername" />
+                </label>
+                <label>Portfolio/Website
+                    <input type="url" id="portfoliourlinput" placeholder="https://yourportfolio.com" />
                 </label>
 
-                <label for="">Portfolio/Website
-                    <input type="url" id="portfoliourlinput" placeholder="https://yourportfolio.com">
-                </label>
-
-                <label for="">About Me
+                <label>About Me
                     <textarea id="aboutmeinput" rows="4" placeholder="Write a short bio about yourself..."></textarea>
                 </label>
+                <div id="aboutme-suggestions" class="suggestion-box"></div>
 
                 <label for="templateSelect">Select Resume Template</label>
                 <select id="templateSelect">
@@ -98,21 +201,19 @@
                 </select>
 
                 <label for="profileImage">Profile Photo (optional)</label>
-                <input type="file" id="profileImage" accept="image/*">
+                <input type="file" id="profileImage" accept="image/*" />
 
                 <div>
                     <button id="btn-1" type="button">Preview</button>
                     <button id="btn-2" type="button">Download resume</button>
+                    <button id="correctAllGrammarBtn" type="button">Correct All Grammar</button> <!-- Add this -->
+                    <!-- <button onclick="location.href='ats-check.html'" class="btn">Check ATS Score</button> -->
+                   <button  type="button" class="btn" > <a style="text-decoration: none;color: black;"href="ats-check.html">Know Your ATS Score</a> </button>
+
                 </div>
             </form>
 
-            <!-- <div>
-                <h3>Preview your resume</h3>
-                <button class="btn">Preview</button>
-            </div> -->
-
             <img id="preview-image" style="display: none;" alt="Profile" />
-
         </section>
 
         <section id="preview-section" style="display: none;">
@@ -237,20 +338,13 @@
 
     </div>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
-
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/downloadjs@1.4.7"></script> -->
 
     <!-- Add these right before your closing </body> tag -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
+    <script src="script1.js"></script>
 </body>
 
 

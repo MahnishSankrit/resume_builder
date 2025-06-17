@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ATS Score Checker</title>
+  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="ats.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>ATS Score Checker</h1>
+
+    <div class="section">
+      <label><input type="radio" name="resumeOption" value="platform" checked /> Use my platform resume</label><br>
+      <label><input type="radio" name="resumeOption" value="upload" /> Upload my resume file</label>
+
+      <div id="uploadSection" class="drag-drop" style="display:none;">
+        Drag & Drop your resume file here<br>(PDF / DOCX / TXT)<br>
+        <input type="file" id="resumeUpload" accept=".txt,.pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain">
+
+      </div>
+    </div>
+
+    <div class="section">
+      <label for="jobDescription"><strong>Paste Job Description:</strong></label>
+      <textarea id="jobDescription" rows="7" placeholder="Paste the job description here..."></textarea>
+    </div>
+
+    <div class="section" style="text-align:center;">
+      <button class="btn" id="checkScoreBtn">Check ATS Score</button>
+    </div>
+
+    <div id="atsResult">
+      <h3>🎯 Your ATS Score:</h3>
+      <p id="atsScoreText"></p>
+      <h4>✅ Matched Keywords:</h4>
+      <p id="matchedKeywords"></p>
+      <h4>❌ Missing Keywords:</h4>
+      <p id="missingKeywords"></p>
+    </div>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+<script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+
+<script src="ats.js"></script>
+</body>
+</html>
